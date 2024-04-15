@@ -65,6 +65,28 @@ export default function SignUp() {
           onChange={handleChange}
         />
 
+        <div className='flex items-center'>
+          <label className='mr-2'>Are you a realtor?</label>
+          <div className='flex items-center'>
+            <input
+              type='radio'
+              id='user'
+              name='userType'
+              value='user'
+              onChange={handleChange}
+            />
+            <label htmlFor='user' className='mr-2'>User</label>
+            <input
+              type='radio'
+              id='realtor'
+              name='userType'
+              value='realtor'
+              onChange={handleChange}
+            />
+            <label htmlFor='realtor'>Realtor</label>
+          </div>
+        </div>
+
         <button
           disabled={loading}
           className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
