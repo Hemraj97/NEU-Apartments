@@ -29,6 +29,9 @@ export default function Profile() {
   const [showListingsError, setShowListingsError] = useState(false);
   const [userListings, setUserListings] = useState([]);
   const dispatch = useDispatch();
+  const isLinkEnabled = currentUser['userType'] === 'realtor';
+  console.log(isLinkEnabled);
+  console.log(JSON.stringify(currentUser));
 
   // firebase storage
   // allow read;
@@ -219,12 +222,18 @@ export default function Profile() {
         >
           {loading ? 'Loading...' : 'Update'}
         </button>
+        {isLinkEnabled ? (
         <Link
           className='bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95'
           to={'/create-listing'}
         >
           Create Listing
         </Link>
+      ) : ""
+        // <div className='bg-gray-300 text-gray-600 p-3 rounded-lg uppercase text-center'>
+        //   Create Listing
+        // </div>
+      }
       </form>
       <div className='flex justify-between mt-5'>
         <span

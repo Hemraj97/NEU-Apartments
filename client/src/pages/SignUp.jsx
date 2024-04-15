@@ -8,11 +8,49 @@ export default function SignUp() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const handleChange = (e) => {
-    setFormData({
+    if(e.target.type === 'radio'){
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      });
+      console.log("Inside handlechnage "+JSON.stringify(formData));
+    }
+    else { setFormData({
       ...formData,
       [e.target.id]: e.target.value,
     });
+  }
+    console.log(JSON.stringify(formData));
   };
+
+  const handleUserChange = (e) => {
+    console.log("Inside handleUserChange");
+    
+    if(e.target.value == 'realtor'){
+      console.log("Inside realtor");
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      });
+    }
+    else if(e.target.value == 'user'){
+      console.log("Inside user");
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      });
+    }
+    else{
+      setFormData({
+        ...formData,
+        ['userType']: e.target.value,
+      });
+    }
+    
+      
+    console.log("This is target value "+e.target.value);
+    console.log("this is formdata "+JSON.stringify(formData));
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -71,19 +109,21 @@ export default function SignUp() {
             <input
               type='radio'
               id='user'
-              name='userType'
               value='user'
+              name='userType'
+              checked={formData['userType'] === 'user'}
               onChange={handleChange}
             />
             <label htmlFor='user' className='mr-2'>User</label>
-            <input
-              type='radio'
-              id='realtor'
-              name='userType'
-              value='realtor'
-              onChange={handleChange}
-            />
-            <label htmlFor='realtor'>Realtor</label>
+          <input
+            type='radio'
+            id='realtor'
+            name='userType'
+            value='realtor'
+            checked={formData['userType'] === 'realtor'}
+            onChange={handleChange}
+          />
+          <label htmlFor='realtor'>Realtor</label>
           </div>
         </div>
 
