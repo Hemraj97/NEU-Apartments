@@ -2,16 +2,17 @@
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
+console.log(import.meta.env.VITE_FIREBASE_KEY);
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: "boston-estate.firebaseapp.com",
-  projectId: "boston-estate",
-  storageBucket: "boston-estate.appspot.com",
-  messagingSenderId: "158714252367",
-  appId: "1:158714252367:web:22a9679d8b4de3aaafee3a"
+  apiKey: import.meta.env.VITE_FIREBASE_KEY,
+  authDomain: "mern-estate-59007.firebaseapp.com",
+  projectId: "mern-estate-59007",
+  storageBucket: "mern-estate-59007.appspot.com",
+  messagingSenderId: "703278295363",
+  appId: "1:703278295363:web:11cdcc43d66b3cb6c367f6"
 };
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+export { app };
